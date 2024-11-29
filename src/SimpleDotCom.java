@@ -20,6 +20,7 @@ public class SimpleDotCom {
         if (numOfHits == locationCells.length) {
             result = "Потопил";
         }
+
         System.out.println(result);
         return result;
     }
