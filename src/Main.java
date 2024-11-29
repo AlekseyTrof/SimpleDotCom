@@ -10,7 +10,6 @@ public class Main {
 
         int[] locations = {random, random + 1, random + 2};
         theDotCom.setLocationCells(locations);
-
         boolean isAlive = true;
 
         while (isAlive == true) {

@@ -14,7 +14,6 @@ public class GameHelper {
         catch (IOException e) {
             System.out.println("IOException: " + e);
         }
-
         return inputLine;
     }
 }
