@@ -1,1 +1,1 @@
-# SimplDotCom
+# SimpleDotCom
