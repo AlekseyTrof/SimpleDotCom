@@ -1,24 +1,30 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         int numOfGuess = 0;
         GameHelper helper = new GameHelper();
 
-        SimpleDotCom theDotCom = new SimpleDotCom();
-        int random = (int) (Math.random() * 7);
+        DotCom theDotCom = new DotCom();
+        int random = (int) (Math.random() * 17);
 
-        int[] locations = {random, random + 1, random + 2};
-        theDotCom.setLocationCells(locations);
+        ArrayList<String> loc = new ArrayList<>();
+        loc.add(random + "");
+        loc.add((random + 1) + "");
+        loc.add((random + 2) + "");
+        theDotCom.setLocationCells(loc);
         boolean isAlive = true;
 
-        while (isAlive == true) {
+        while (isAlive) {
             String guess = helper.getUserInput("Введите число:");
             String result = theDotCom.checkYourself(guess);
             numOfGuess++;
-            if (result.equals("Потопил")) {
+            if (result.equals("Потопил(а)")) {
                 isAlive = false;
+                System.out.println(result);
                 System.out.println("Вам потребовалось " + numOfGuess + " попыток(и)");
+            } else {
+                System.out.println(result);
             }
         }
     }
