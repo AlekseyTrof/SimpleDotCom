@@ -1,3 +1,5 @@
+package dotCom;
+
 import java.util.ArrayList;
 
 public class DotCom {

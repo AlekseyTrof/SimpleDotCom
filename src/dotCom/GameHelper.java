@@ -1,3 +1,5 @@
+package dotCom;
+
 import java.io.*;
 
 public class GameHelper {
