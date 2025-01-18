@@ -43,7 +43,7 @@ public class TwoButtons implements ActionListener {
     class LabelListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            label.setText("Ouch! ");
+            label.setText("Ouch!");
         }
     }
 
