@@ -9,13 +9,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class BeatBox {
-    JPanel mainPanel;
-    ArrayList<JCheckBox> checkBoxList;
-    Sequencer sequencer;
-    Sequence sequence;
-    Track track;
-    JFrame theFrame;
-    File fileName = new File("CheckBox");
+    private JPanel mainPanel;
+    private ArrayList<JCheckBox> checkBoxList;
+    private Sequencer sequencer;
+    private Sequence sequence;
+    private Track track;
+    private JFrame theFrame;
+    private final File FILE_NAME = new File("CheckBox.ser");
 
     String[] instrumentNames = {"Bass Drum", "Closed Hi-Hat", "Open Hi-Hat",
             "Acoustic Snare", "Crash Cymbal", "Hand Clap",
@@ -55,11 +55,11 @@ public class BeatBox {
         buttonBox.add(downTempo);
 
         JButton serializelt = new JButton("Serializelt");
-        downTempo.addActionListener(new MySendListener());
+        serializelt.addActionListener(new MySendListener());
         buttonBox.add(serializelt);
 
         JButton restore = new JButton("Restore");
-        downTempo.addActionListener(new MyReadInListener());
+        restore.addActionListener(new MyReadInListener());
         buttonBox.add(restore);
 
         Box nameBox = new Box(BoxLayout.Y_AXIS);
@@ -230,7 +230,7 @@ public class BeatBox {
                 }
             }
             try {
-                FileOutputStream fileStream = new FileOutputStream(fileName);
+                FileOutputStream fileStream = new FileOutputStream(FILE_NAME);
                 ObjectOutputStream os = new ObjectOutputStream(fileStream);
                 os.writeObject(checkboxState);
                 System.out.println("Записалось");
@@ -243,12 +243,10 @@ public class BeatBox {
     public class MyReadInListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            boolean[] checkboxState = new boolean[256];
+            boolean[] checkboxState = null;
             try {
-                ObjectInputStream is = new ObjectInputStream(new FileInputStream(fileName));
-                for (int i = 0; i < checkboxState.length; i++) {
-                    checkboxState = (boolean[]) is.readObject();
-                }
+                ObjectInputStream is = new ObjectInputStream(new FileInputStream(FILE_NAME));
+                checkboxState = (boolean[]) is.readObject();
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
